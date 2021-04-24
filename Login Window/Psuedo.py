@@ -1,6 +1,12 @@
 # Psuedocode for the login window.
 
-Attempts = 3
+attempts = 3
+
+login fail = "please check if username and password is correct"
+
+login success = go to next module
+
+lock out = "you have been locked out. please contact technical support."
 
 input USERNAME 
 
@@ -10,22 +16,18 @@ if (USERNAME == FILE:USERS.USERNAME && PASSWORD == FILE:USERS.PASSWORD) then:
 
     login success
 
-    go to next module
-
 else:
 
     Attempts = Attempts – 1
 
-if Attempts > 0:
-
     login fail
 
-    error message
+if Attempts > 0:
 
-    return to login
+    lock out
 
 else:
 
     error message
 
-    quit
+    quit 
