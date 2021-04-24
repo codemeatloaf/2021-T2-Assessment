@@ -1,18 +1,12 @@
 # Psuedocode for the login window.
 
-import os
-
 Attempts = 3
 
-clear = lambda: os.system('cls')
+input USERNAME 
 
-print("enter username: ")
-a1 = input()
+input PASSWORD
 
-print("enter password: ")
-a2 = input()
-
-if (a1 == FILE:USERS.USERNAME && a2 == FILE:USERS.PASSWORD) then:
+if (USERNAME == FILE:USERS.USERNAME && PASSWORD == FILE:USERS.PASSWORD) then:
 
     login success
 
@@ -24,14 +18,14 @@ else:
 
 if Attempts > 0:
 
-    LOGIN FAILED
+    login fail
 
-    ERROR MESSAGE
+    error message
 
-    RETURN TO LOGIN WINDOW
+    return to login
 
 else:
 
-    ERROR MESSAGE
+    error message
 
-    quit()
+    quit
