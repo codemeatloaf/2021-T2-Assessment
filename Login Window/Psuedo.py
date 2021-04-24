@@ -1,4 +1,4 @@
-# Psuedocode for the login window.
+# psuedocode for the login window.
 
 attempts = 3
 
