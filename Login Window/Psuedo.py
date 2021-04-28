@@ -2,11 +2,13 @@
 
 attempts = 3
 
-login fail = "please check if username and password is correct"
+FAIL = "please check if username and password is correct"
 
-login success = go to next module
+SUCCESS = next module
 
-lock out = "you have been locked out. please contact technical support."
+LOCKOUT = "you have been locked out. please contact technical support."
+
+ERROR MESSAGE = "there has been an error"
 
 input USERNAME 
 
@@ -14,21 +16,16 @@ input PASSWORD
 
 
 if (USERNAME == FILE:USERS.USERNAME && PASSWORD == FILE:USERS.PASSWORD) then:
-
-    login success
+    SUCCESS
 
 else:
-
     Attempts = Attempts – 1
-
-    login fail
+    FAIL
 
 if Attempts > 0:
-
-    lock out
+    LOCKOUT
 
 else:
+    ERROR MESSAGE
+    QUIT
 
-    error message
-
-    quit 
