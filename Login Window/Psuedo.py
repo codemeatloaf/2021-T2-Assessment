@@ -17,6 +17,7 @@ input PASSWORD
 
 if (USERNAME == FILE:USERS.USERNAME && PASSWORD == FILE:USERS.PASSWORD) then:
     SUCCESS
+    END
 
 else:
     Attempts = Attempts – 1
@@ -24,8 +25,10 @@ else:
 
 if Attempts > 0:
     LOCKOUT
+    END
 
 else:
     ERROR MESSAGE
     QUIT
+    END
 

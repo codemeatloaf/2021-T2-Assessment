@@ -7,6 +7,8 @@ input SELECTION
 
 if (SELECTION == FILE:USERS.USERPERMISSIONS) then:
     SUCCESS
+    END
 
 else: 
    FAILURE 
+   END
