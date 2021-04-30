@@ -1,5 +1,7 @@
 # psuedocode for the login window.
 
+BEGIN
+
 attempts = 3
 
 FAIL = "Please check if username and password is correct"

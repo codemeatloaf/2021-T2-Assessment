@@ -1,5 +1,7 @@
 # Psuedocode for selection screen
 
+BEGIN
+
 FAILURE = "you do not have the permissions for that option"
 SUCCESS = next module
 
