@@ -2,13 +2,13 @@
 
 attempts = 3
 
-FAIL = "please check if username and password is correct"
+FAIL = "Please check if username and password is correct"
 
 SUCCESS = next module
 
-LOCKOUT = "you have been locked out. please contact technical support."
+LOCKOUT = "You have been locked out. please contact technical support."
 
-ERROR MESSAGE = "there has been an error"
+ERROR MESSAGE = "There has been an error"
 
 input USERNAME 
 
