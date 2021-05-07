@@ -1,7 +1,26 @@
+# videos used:
+# https://www.youtube.com/watch?v=QfhF9BnmN6E -1 
+# https://www.youtube.com/watch?v=I_URK0ojOC0 -2
+
 # imports
 import tkinter
 import sqlite3
 import tkinter.font as tkFont
+from tkinter import messagebox
+
+def login():
+    db=sqlite3.connect('login.sqlite')
+    db.execute('CREATE TABLE IF NOT EXISTS login(username TEXT, password TEXT)')
+    db.execute("INSERT INTO login(username, password) VALUES('admin', 'admin')")
+    cursor=db.cursor()
+    cursor.execute("SELECT * FROM login where username=? AND password=?",(user_input.get(), pass_input.get()))
+    row=cursor.fetchone()
+    if row:
+        messagebox.showinfo('info', 'Login Success!')
+    else:
+        messagebox.showinfo('info', 'Login Failure.')
+
+
 
 # window
 tkmain = tkinter.Tk()
@@ -9,9 +28,14 @@ tkmain = tkinter.Tk()
 padding=20
 tkmain['padx']=padding
 
+# input process
+username=tkinter.StringVar()
+password=tkinter.StringVar()
+
+
 # fonts
-info_font = tkFont.Font(family="Source Code Pro Bold", size=20)
-user_font = tkFont.Font(family="Source Code Pro Italic", size=15)
+info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
+user_font=tkFont.Font(family="Source Code Pro Italic", size=15)
 
 # title and geometry
 tkmain.title('Login / Registery')
@@ -24,14 +48,14 @@ info_label.grid(row=0, column=0)
 # username input
 info_user=tkinter.Label(tkmain, text='Username:', font=user_font)
 info_user.grid(row=2, column=0)
-user_input=tkinter.Entry()
+user_input=tkinter.Entry(tkmain, textvariable=username)
 user_input.grid(row=3, column=0)
 
 
 # password input
 info_pass=tkinter.Label(tkmain, text='Password:', font=user_font)
 info_pass.grid(row=6, column=0)
-pass_input=tkinter.Entry()
+pass_input=tkinter.Entry(tkmain, textvariable=password)
 pass_input.grid(row=7, column=0)
 
 # spacer
@@ -39,7 +63,7 @@ spacer=tkinter.Label(tkmain, text=' ')
 spacer.grid(row=8, column=0)
 
 # submit
-submit_btn=tkinter.Button(text='Submit' )
+submit_btn=tkinter.Button(text='Submit', command=login)
 submit_btn.grid(row=9, column=0)
 
 # end of mainloop
