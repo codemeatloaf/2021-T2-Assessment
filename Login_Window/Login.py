@@ -38,7 +38,7 @@ password=tkinter.StringVar()
 
 # open sign up app
 def sign_up():
-    os.system(r'python C:\Users\Ciaran\Portfolio\Login_Window\Register.py')
+    os.system(r'python C:\Users\Ciaran\Portfolio\Login Window\Register.py')
 
 # fonts
 info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
