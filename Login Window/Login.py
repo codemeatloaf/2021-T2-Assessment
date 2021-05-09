@@ -71,4 +71,3 @@ submit_btn.grid(row=9, column=0)
 
 # end of mainloop
 tkmain.mainloop()
-
