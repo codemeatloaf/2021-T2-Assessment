@@ -31,7 +31,7 @@ tkmain = tkinter.Tk()
 padding=20
 tkmain['padx']=padding
 
-# input process
+# input process 
 username=tkinter.StringVar()
 password=tkinter.StringVar()
 
@@ -40,7 +40,7 @@ password=tkinter.StringVar()
 info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
 input_font=tkFont.Font(family="Source Code Pro Italic", size=15)
 
-# title and geometry
+# name and geometry
 tkmain.title('Login')
 tkmain.geometry('320x190')
 
