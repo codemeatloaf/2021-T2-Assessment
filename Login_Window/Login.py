@@ -1,6 +1,3 @@
-# videos used:
-# https://www.youtube.com/watch?v=QfhF9BnmN6E -1 
-# https://www.youtube.com/watch?v=I_URK0ojOC0 -2
 
 # imports
 import tkinter
