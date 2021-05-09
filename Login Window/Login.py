@@ -8,6 +8,7 @@ import sqlite3
 import tkinter.font as tkFont
 from tkinter import messagebox
 
+# define variables
 def login():
     db=sqlite3.connect('login.sqlite')
     db.execute('CREATE TABLE IF NOT EXISTS login(username TEXT, password TEXT)')
@@ -16,8 +17,10 @@ def login():
     cursor.execute("SELECT * FROM login where username=? AND password=?",(user_input.get(), pass_input.get()))
     row=cursor.fetchone()
     if row:
+        # end
         messagebox.showinfo('info', 'Login Success!')
     else:
+        # error screen
         messagebox.showinfo('info', 'Login Failure.')
 
 
