@@ -7,6 +7,8 @@ import tkinter
 import sqlite3
 import tkinter.font as tkFont
 from tkinter import messagebox
+import os
+import sys
 
 # define variables
 def login():
@@ -18,12 +20,14 @@ def login():
     row=cursor.fetchone()
     if row:
         # end
-        messagebox.showinfo('info', 'Login Success!')
+        # messagebox.showinfo('info', 'Login Success!')
+        next
     else:
         # error screen
         messagebox.showinfo('info', 'Login Failure.')
 
-
+def next():
+     os.system('python Select.py')
 
 # window
 tkmain = tkinter.Tk()
