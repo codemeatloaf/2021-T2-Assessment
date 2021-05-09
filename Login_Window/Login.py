@@ -21,6 +21,7 @@ def login():
     if row:
         # end
         messagebox.showinfo('info', 'Login Success!')
+        select_option()
         
     else:
         # error screen
@@ -38,7 +39,11 @@ password=tkinter.StringVar()
 
 # open sign up app
 def sign_up():
-    os.system(r'python C:\Users\Ciaran\Portfolio\Login Window\Register.py')
+    os.system(r'python Login_Window\Register.py')
+
+# open selection app
+def select_option():
+    os.system(r'python Selection_Screen\Select.py')
 
 # fonts
 info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
