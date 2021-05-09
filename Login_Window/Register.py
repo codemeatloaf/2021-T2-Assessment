@@ -48,19 +48,31 @@ password_entry_entry = Entry(tk_main, textvariable=password_entry)
 password_entry_entry.grid(row=7, column=0)
 
 # insert info into db
-def savedata ():
+def savedata():
     conn = sqlite3.connect('login.sqlite')
     c = conn.cursor()
     c.execute('INSERT INTO login (username, password) VALUES (?,?)', (username_entry.get(), password_entry.get()))
     conn.commit()
     print("OK")
 
+# security
+def blank1():
+    if password_entry_entry.get():
+        blank2
+    else:
+        messagebox.showinfo('info', 'Input required.')
+def blank2():
+    if username_entry_entry.get():
+        savedata
+    else:
+        messagebox.showinfo('info', 'Input required.')
+
 # spacer
 spacer=tk.Label(tk_main, text=' ')
 spacer.grid(row=8, column=0)
 
 # save data
-enter_btn = Button(text="Enter",command=savedata)
+enter_btn = Button(text="Enter",command=blank1)
 enter_btn.grid(row=9, column=0)
 
 # end mainloop
