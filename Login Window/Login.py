@@ -8,7 +8,6 @@ import sqlite3
 import tkinter.font as tkFont
 from tkinter import messagebox
 import os
-import sys
 
 # define variables
 def login():
@@ -20,14 +19,11 @@ def login():
     row=cursor.fetchone()
     if row:
         # end
-        # messagebox.showinfo('info', 'Login Success!')
-        next
+        messagebox.showinfo('info', 'Login Success!')
+        
     else:
         # error screen
         messagebox.showinfo('info', 'Login Failure.')
-
-def next():
-     os.system('python Select.py')
 
 # window
 tkmain = tkinter.Tk()
@@ -42,10 +38,10 @@ password=tkinter.StringVar()
 
 # fonts
 info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
-user_font=tkFont.Font(family="Source Code Pro Italic", size=15)
+input_font=tkFont.Font(family="Source Code Pro Italic", size=15)
 
 # title and geometry
-tkmain.title('Login / Registery')
+tkmain.title('Login')
 tkmain.geometry('320x190')
 
 # title 
@@ -53,14 +49,14 @@ info_label=tkinter.Label(tkmain, text='Login Application', font=info_font)
 info_label.grid(row=0, column=0)
 
 # username input
-info_user=tkinter.Label(tkmain, text='Username:', font=user_font)
+info_user=tkinter.Label(tkmain, text='Username:', font=input_font)
 info_user.grid(row=2, column=0)
 user_input=tkinter.Entry(tkmain, textvariable=username)
 user_input.grid(row=3, column=0)
 
 
 # password input
-info_pass=tkinter.Label(tkmain, text='Password:', font=user_font)
+info_pass=tkinter.Label(tkmain, text='Password:', font=input_font)
 info_pass.grid(row=6, column=0)
 pass_input=tkinter.Entry(tkmain, textvariable=password)
 pass_input.grid(row=7, column=0)
