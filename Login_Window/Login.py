@@ -25,7 +25,7 @@ def login():
         
     else:
         # error screen
-        messagebox.showinfo('info', 'Login Failure.')
+        messagebox.showinfo('info', 'Login failure.')
 
 # window
 tkmain = tkinter.Tk()
@@ -48,7 +48,7 @@ def select_option():
 # fonts
 info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
 input_font=tkFont.Font(family="Source Code Pro Italic", size=15)
-
+ 
 # name and geometry
 tkmain.title('Login')
 tkmain.geometry('320x220')
