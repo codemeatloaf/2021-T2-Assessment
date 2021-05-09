@@ -1,52 +1,68 @@
+
 # imports
-import tkinter
-import sqlite3
-import tkinter.font as tkFont
+import random
+import tkinter as tk
+from tkinter import *
 from tkinter import messagebox
-import os
+import tkinter.font as tkFont
+import sqlite3
+
+def finish():
+    conn = sqlite3.connect('login.sqlite')
+    c = conn.cursor()
+    c.execute("CREATE TABLE IF NOT EXISTS login (username TEXT, password TEXT)")
+    conn.commit()
+    conn.close()
 
 # window
-tkmain = tkinter.Tk()
-
+tk_main = tk.Tk()
 padding=20
-tkmain['padx']=padding
+tk_main['padx']=padding
 
-# input process
-username=tkinter.StringVar()
-password=tkinter.StringVar()
+# name and geometry
+tk_main.title('Create Account')
+tk_main.geometry('270x200')
 
 # fonts
 info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
 input_font=tkFont.Font(family="Source Code Pro Italic", size=15)
 
-# name and geometry
-tkmain.title('Create Account')
-tkmain.geometry('320x190')
-
 # title 
-info_label=tkinter.Label(tkmain, text='Login Application', font=info_font)
+info_label=tk.Label(tk_main, text='Create Account', font=info_font)
 info_label.grid(row=0, column=0)
 
-# username input
-info_user=tkinter.Label(tkmain, text='Username:', font=input_font)
-info_user.grid(row=2, column=0)
-user_input=tkinter.Entry(tkmain, textvariable=username)
-user_input.grid(row=3, column=0)
+# labels
+username = Label(tk_main, text="Username", font=input_font)
+username.grid(row=2, column=0)
+password = Label(tk_main, text="Password", font=input_font)
+password.grid(row=6, column=0)
 
+# username input 
+username_entry = tk.StringVar()
+username_entry_entry = Entry(tk_main, textvariable=username_entry)
+username_entry_entry.grid(row=3, column=0)
 
-# password input
-info_pass=tkinter.Label(tkmain, text='Password:', font=input_font)
-info_pass.grid(row=6, column=0)
-pass_input=tkinter.Entry(tkmain, textvariable=password)
-pass_input.grid(row=7, column=0)
+# password input 
+password_entry = tk.StringVar()
+password_entry_entry = Entry(tk_main, textvariable=password_entry)
+password_entry_entry.grid(row=7, column=0)
+
+# insert info into db
+def savedata ():
+    conn = sqlite3.connect('login.sqlite')
+    c = conn.cursor()
+    c.execute('INSERT INTO login (username, password) VALUES (?,?)', (username_entry.get(), password_entry.get()))
+    conn.commit()
+    print("OK")
 
 # spacer
-spacer=tkinter.Label(tkmain, text=' ')
+spacer=tk.Label(tk_main, text=' ')
 spacer.grid(row=8, column=0)
 
-# submit
-submit_btn=tkinter.Button(text='Submit')
-submit_btn.grid(row=9, column=0)
+# save data
+enter_btn = Button(text="Enter",command=savedata)
+enter_btn.grid(row=9, column=0)
 
-# end of mainloop
-tkmain.mainloop()
+# end mainloop
+finish()
+tk_main.mainloop()

@@ -9,11 +9,10 @@ import tkinter.font as tkFont
 from tkinter import messagebox
 import os
 
+db=sqlite3.connect('login.sqlite')
+
 # define variables
 def login():
-    db=sqlite3.connect('login.sqlite')
-    db.execute('CREATE TABLE IF NOT EXISTS login(username TEXT, password TEXT)')
-    db.execute("INSERT INTO login(username, password) VALUES('admin', 'admin')")
     cursor=db.cursor()
     cursor.execute("SELECT * FROM login where username=? AND password=?",(user_input.get(), pass_input.get()))
     row=cursor.fetchone()
