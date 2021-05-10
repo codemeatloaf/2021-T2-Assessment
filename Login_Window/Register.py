@@ -50,7 +50,6 @@ password.grid(row=4, column=0)
 level = Label(tk_main, text="Level", font=input_font)
 level.grid(row=7, column=0)
 
-
 # username input 
 username_entry = tk.StringVar()
 username_storage = Entry(tk_main, textvariable=username_entry)
