@@ -13,7 +13,7 @@ db=sqlite3.connect('login.sqlite')
 # define variables
 def login():
     cursor=db.cursor()
-    cursor.execute("SELECT * FROM login where username=? AND password=?",(user_input.get(), pass_input.get()))
+    cursor.execute("SELECT * FROM staff where username=? AND password=?",(user_input.get(), pass_input.get()))
     row=cursor.fetchone()
     if row:
         # end
