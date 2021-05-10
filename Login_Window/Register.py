@@ -10,7 +10,7 @@ import sqlite3
 def finish():
     conn = sqlite3.connect('login.sqlite')
     c = conn.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS login (username TEXT, password TEXT)")
+    c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT)")
     conn.commit()
     conn.close()
 
@@ -51,7 +51,7 @@ password_storage.grid(row=7, column=0)
 def savedata():
     conn = sqlite3.connect('login.sqlite')
     c = conn.cursor()
-    c.execute('INSERT INTO login (username, password) VALUES (?,?)', (username_entry.get(), password_entry.get()))
+    c.execute('INSERT INTO staff (username, password) VALUES (?,?)', (username_entry.get(), password_entry.get()))
     conn.commit()
     print("OK")
 
@@ -73,8 +73,8 @@ spacer=tk.Label(tk_main, text=' ')
 spacer.grid(row=8, column=0)
 
 # save data
-enter_btn = Button(text="Enter",command=blank1)
-enter_btn.grid(row=9, column=0)
+# enter_btn = Button(text="Enter",command=blank1)
+# enter_btn.grid(row=9, column=0)
 
 # end mainloop
 finish()
