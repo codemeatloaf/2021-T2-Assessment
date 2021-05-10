@@ -14,6 +14,12 @@ def finish():
     conn.commit()
     conn.close()
 
+# focus next text box
+def focus_next(event):
+    event.widget.tk_focusNext().focus()
+    return("break")
+
+# dropdown list
 option_list = [
     "Admin",
     "Staff"
@@ -49,19 +55,18 @@ level.grid(row=7, column=0)
 username_entry = tk.StringVar()
 username_storage = Entry(tk_main, textvariable=username_entry)
 username_storage.grid(row=3, column=0)
+username_storage.bind("<Tab>", focus_next)
 
 # password input 
 password_entry = tk.StringVar()
 password_storage = Entry(tk_main, textvariable=password_entry)
 password_storage.grid(row=6, column=0)
+password_storage.bind("<Tab>", focus_next)
 
 # level input
 level_entry = tk.StringVar()
-level_entry.set('Choose Level')
 level_storage = tk.OptionMenu(tk_main, level_entry, *option_list)
 level_storage.grid(row=8, column=0)
-
-
 
 # insert info into db
 def savedata():
@@ -98,6 +103,7 @@ spacer.grid(row=9, column=0)
 # save button
 enter_btn = Button(text="Enter",command=blank1)
 enter_btn.grid(row=10, column=0)
+
 
 # end mainloop
 finish()
