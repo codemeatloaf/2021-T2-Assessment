@@ -99,7 +99,6 @@ user_input=tkinter.Entry(tk_main, textvariable=username)
 user_input.grid(row=3, column=0)
 user_input.bind("<Tab>", focus_next)
 
-
 # password input
 info_pass=tkinter.Label(tk_main, text='Password:', font=input_font)
 info_pass.grid(row=6, column=0)
