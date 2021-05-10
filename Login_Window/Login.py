@@ -20,17 +20,35 @@ conn.close()
 def login():
     conn = sqlite3.connect('login.sqlite')
     cursor=conn.cursor()
-    cursor.execute("SELECT * FROM staff where username=? AND password=?",(user_input.get(), pass_input.get()))
+    cursor.execute("SELECT * FROM staff WHERE username=? AND password=?",(user_input.get(), pass_input.get()))
     match=cursor.fetchone()
     if match:
-        # next
+        # permissions
+        conn.close()
         messagebox.showinfo('info', 'Login Success!')   
-        select_option()
-        
-        
+        permissions()
+
     else:
         # error screen
+        conn.close()
         messagebox.showinfo('info', 'Login failure.')
+
+def permissions():
+    conn = sqlite3.connect('login.sqlite')
+    cursor=conn.cursor()
+    cursor.execute("SELECT * FROM staff WHERE username=? AND password=? AND level='Admin'", (user_input.get(), pass_input.get()))
+    match=cursor.fetchone()
+    if match:
+        # admin permissions, move to selection
+        conn.close()
+        messagebox.showinfo('info', 'Welcome Admin.')
+        select_option()
+    
+    else:
+        conn.close()
+        messagebox.showinfo('info', 'Welcome Staff.')
+        interface_option()
+
 
 # focus next text box
 def focus_next(event):
@@ -49,7 +67,7 @@ username=tkinter.StringVar()
 password=tkinter.StringVar()
 
 # open sign up app
-def sign_up():
+def signup_option():
     tk_main.destroy()
     os.system(r'python Login_Window\Register.py')
 
@@ -57,6 +75,11 @@ def sign_up():
 def select_option():
     tk_main.destroy()
     os.system(r'python Selection_Screen\Select.py')
+
+# open interface app
+def interface_option():
+    tk_main.destroy()
+    os.system(r'python Database_Interface\Interface.py')
 
 # fonts
 info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
@@ -94,7 +117,7 @@ submit_btn=tkinter.Button(text='Submit', command=login)
 submit_btn.grid(row=9, column=0)
 
 # create admin account
-#sign_btn=tkinter.Button(text="Sign Up", command= sign_up)
+#sign_btn=tkinter.Button(text="Sign Up", command= signup_option)
 #sign_btn.grid(row=10, column=0)
 
 # end of mainloop
