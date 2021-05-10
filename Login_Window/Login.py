@@ -24,13 +24,19 @@ def login():
         # error screen
         messagebox.showinfo('info', 'Login failure.')
 
+# focus next text box
+def focus_next(event):
+    event.widget.tk_focusNext().focus()
+    return("break")
+
+
 # window
-tkmain = tkinter.Tk()
+tk_main = tkinter.Tk()
 
 padding=20
-tkmain['padx']=padding
+tk_main['padx']=padding
 
-# input process 
+# input variables
 username=tkinter.StringVar()
 password=tkinter.StringVar()
 
@@ -47,28 +53,30 @@ info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
 input_font=tkFont.Font(family="Source Code Pro Italic", size=15)
  
 # name and geometry
-tkmain.title('Login')
-tkmain.geometry('320x220')
+tk_main.title('Login')
+tk_main.geometry('320x220')
 
 # title 
-info_label=tkinter.Label(tkmain, text='Login Application', font=info_font)
+info_label=tkinter.Label(tk_main, text='Login Application', font=info_font)
 info_label.grid(row=0, column=0)
 
 # username input
-info_user=tkinter.Label(tkmain, text='Username:', font=input_font)
+info_user=tkinter.Label(tk_main, text='Username:', font=input_font)
 info_user.grid(row=2, column=0)
-user_input=tkinter.Entry(tkmain, textvariable=username)
+user_input=tkinter.Entry(tk_main, textvariable=username)
 user_input.grid(row=3, column=0)
+user_input.bind("<Tab>", focus_next)
 
 
 # password input
-info_pass=tkinter.Label(tkmain, text='Password:', font=input_font)
+info_pass=tkinter.Label(tk_main, text='Password:', font=input_font)
 info_pass.grid(row=6, column=0)
-pass_input=tkinter.Entry(tkmain, textvariable=password)
+pass_input=tkinter.Entry(tk_main, textvariable=password)
 pass_input.grid(row=7, column=0)
+pass_input.bind("<Tab>", focus_next)
 
 # spacer
-spacer=tkinter.Label(tkmain, text=' ')
+spacer=tkinter.Label(tk_main, text=' ')
 spacer.grid(row=8, column=0)
 
 # submit
@@ -80,4 +88,4 @@ submit_btn.grid(row=9, column=0)
 # sign_btn.grid(row=10, column=0)
 
 # end of mainloop
-tkmain.mainloop()
+tk_main.mainloop()

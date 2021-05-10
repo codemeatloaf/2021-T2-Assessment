@@ -43,8 +43,8 @@ info_label=tk.Label(tk_main, text='Create Account', font=info_font)
 info_label.grid(row=0, column=0)
 
 # labels
-username = Label(tk_main, text="Username", font=input_font)
-username.grid(row=2, column=0)
+username_label = Label(tk_main, text="Username", font=input_font)
+username_label.grid(row=2, column=0)
 password = Label(tk_main, text="Password", font=input_font)
 password.grid(row=4, column=0)
 level = Label(tk_main, text="Level", font=input_font)
@@ -73,7 +73,7 @@ def savedata():
     c = conn.cursor()
     c.execute('INSERT INTO staff (username, password, level) VALUES (?,?,?)', (username_entry.get(), password_entry.get(), level_entry.get()))
     conn.commit()
-    print("OK")
+    tk_main.destroy()
 
 # security
 def blank1():
