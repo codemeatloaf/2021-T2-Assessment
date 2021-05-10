@@ -11,7 +11,7 @@ tkmain = tkinter.Tk()
 
 
 # title and geometry
-tkmain.title('Selection')
+tkmain.title('Interface')
 tkmain.geometry('320x190')
 
 # fonts
