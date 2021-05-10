@@ -39,13 +39,13 @@ password.grid(row=6, column=0)
 
 # username input 
 username_entry = tk.StringVar()
-username_entry_entry = Entry(tk_main, textvariable=username_entry)
-username_entry_entry.grid(row=3, column=0)
+username_storage = Entry(tk_main, textvariable=username_entry)
+username_storage.grid(row=3, column=0)
 
 # password input 
 password_entry = tk.StringVar()
-password_entry_entry = Entry(tk_main, textvariable=password_entry)
-password_entry_entry.grid(row=7, column=0)
+password_storage = Entry(tk_main, textvariable=password_entry)
+password_storage.grid(row=7, column=0)
 
 # insert info into db
 def savedata():
@@ -57,13 +57,14 @@ def savedata():
 
 # security
 def blank1():
-    if password_entry_entry.get():
-        blank2
+    if password_storage.get():
+        blank2()
     else:
         messagebox.showinfo('info', 'Input required.')
+        
 def blank2():
-    if username_entry_entry.get():
-        savedata
+    if username_storage.get():
+        savedata()
     else:
         messagebox.showinfo('info', 'Input required.')
 
