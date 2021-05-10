@@ -73,7 +73,7 @@ level_storage.grid(row=8, column=0)
 
 def next_window():
     tk_main.destroy()
-    os.system(r'python Login_Window\Login.py')
+    os.system(r'python Selection_Screen\Select.py')
 
 # insert info into db
 def savedata():
