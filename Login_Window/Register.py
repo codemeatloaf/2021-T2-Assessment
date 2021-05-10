@@ -35,7 +35,10 @@ info_label.grid(row=0, column=0)
 username = Label(tk_main, text="Username", font=input_font)
 username.grid(row=2, column=0)
 password = Label(tk_main, text="Password", font=input_font)
-password.grid(row=6, column=0)
+password.grid(row=4, column=0)
+#level = Label(tk_main, text="Level", font=input_font)
+#level.grid(row=6, column=0)
+
 
 # username input 
 username_entry = tk.StringVar()
@@ -45,7 +48,12 @@ username_storage.grid(row=3, column=0)
 # password input 
 password_entry = tk.StringVar()
 password_storage = Entry(tk_main, textvariable=password_entry)
-password_storage.grid(row=7, column=0)
+password_storage.grid(row=6, column=0)
+
+# level input
+#level_entry = tk.StringVar()
+#level_storage = Entry(tk_main, textvariable=level_entry)
+#password_storage.grid(row=7, column=0)
 
 # insert info into db
 def savedata():
@@ -72,9 +80,9 @@ def blank2():
 spacer=tk.Label(tk_main, text=' ')
 spacer.grid(row=8, column=0)
 
-# save data
-# enter_btn = Button(text="Enter",command=blank1)
-# enter_btn.grid(row=9, column=0)
+# save button
+enter_btn = Button(text="Enter",command=blank1)
+enter_btn.grid(row=9, column=0)
 
 # end mainloop
 finish()

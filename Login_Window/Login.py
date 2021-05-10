@@ -75,9 +75,9 @@ spacer.grid(row=8, column=0)
 submit_btn=tkinter.Button(text='Submit', command=login)
 submit_btn.grid(row=9, column=0)
 
-# sign up
-sign_btn=tkinter.Button(text="Sign Up", command= sign_up)
-sign_btn.grid(row=10, column=0)
+# create admin account
+# sign_btn=tkinter.Button(text="Sign Up", command= sign_up)
+# sign_btn.grid(row=10, column=0)
 
 # end of mainloop
 tkmain.mainloop()
