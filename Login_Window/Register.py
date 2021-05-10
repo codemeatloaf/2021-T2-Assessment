@@ -121,6 +121,7 @@ def blank3():
     else:
         messagebox.showinfo('info', 'Level required.')
 
+
 # spacer
 spacer=tk.Label(tk_main, text=' ')
 spacer.grid(row=11, column=0)
