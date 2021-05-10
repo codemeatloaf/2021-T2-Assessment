@@ -8,17 +8,25 @@ from tkinter import *
 import sys
 import os
 
-db=sqlite3.connect('login.sqlite')
+# create if not exists
+with sqlite3.connect('login.sqlite') as conn:
+    c = conn.cursor()
+
+c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, level INTEGER)")
+conn.commit()
+conn.close()
 
 # define variables
 def login():
-    cursor=db.cursor()
+    conn = sqlite3.connect('login.sqlite')
+    cursor=conn.cursor()
     cursor.execute("SELECT * FROM staff where username=? AND password=?",(user_input.get(), pass_input.get()))
-    row=cursor.fetchone()
-    if row:
-        # end
-        messagebox.showinfo('info', 'Login Success!')
+    match=cursor.fetchone()
+    if match:
+        # next
+        messagebox.showinfo('info', 'Login Success!')   
         select_option()
+        
         
     else:
         # error screen
@@ -42,10 +50,12 @@ password=tkinter.StringVar()
 
 # open sign up app
 def sign_up():
+    tk_main.destroy()
     os.system(r'python Login_Window\Register.py')
 
 # open selection app
 def select_option():
+    tk_main.destroy()
     os.system(r'python Selection_Screen\Select.py')
 
 # fonts
@@ -84,8 +94,8 @@ submit_btn=tkinter.Button(text='Submit', command=login)
 submit_btn.grid(row=9, column=0)
 
 # create admin account
-# sign_btn=tkinter.Button(text="Sign Up", command= sign_up)
-# sign_btn.grid(row=10, column=0)
+#sign_btn=tkinter.Button(text="Sign Up", command= sign_up)
+#sign_btn.grid(row=10, column=0)
 
 # end of mainloop
 tk_main.mainloop()
