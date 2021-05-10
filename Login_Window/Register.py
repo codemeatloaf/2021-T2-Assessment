@@ -6,13 +6,17 @@ from tkinter import *
 from tkinter import messagebox
 import tkinter.font as tkFont
 import sqlite3
+import sys
+import os
 
-def finish():
-    conn = sqlite3.connect('login.sqlite')
+
+# create if not exists
+with sqlite3.connect('login.sqlite') as conn:
     c = conn.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, level INTEGER)")
-    conn.commit()
-    conn.close()
+
+c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, level INTEGER)")
+conn.commit()
+conn.close()
 
 # focus next text box
 def focus_next(event):
@@ -67,13 +71,18 @@ level_entry = tk.StringVar()
 level_storage = tk.OptionMenu(tk_main, level_entry, *option_list)
 level_storage.grid(row=8, column=0)
 
+def next_window():
+    tk_main.destroy()
+    os.system(r'python Login_Window\Login.py')
+
 # insert info into db
 def savedata():
     conn = sqlite3.connect('login.sqlite')
     c = conn.cursor()
     c.execute('INSERT INTO staff (username, password, level) VALUES (?,?,?)', (username_entry.get(), password_entry.get(), level_entry.get()))
     conn.commit()
-    tk_main.destroy()
+    next_window()
+
 
 # security
 def blank1():
@@ -105,5 +114,4 @@ enter_btn.grid(row=10, column=0)
 
 
 # end mainloop
-finish()
 tk_main.mainloop()
