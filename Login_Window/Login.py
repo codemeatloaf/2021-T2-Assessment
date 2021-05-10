@@ -47,6 +47,7 @@ def permissions():
     else:
         conn.close()
         messagebox.showinfo('info', 'Welcome Staff.')
+        interface_option()
 
 # focus next text box
 def focus_next(event):
