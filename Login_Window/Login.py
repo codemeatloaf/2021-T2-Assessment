@@ -3,7 +3,7 @@
 import tkinter
 import sqlite3
 import tkinter.font as tkFont
-from tkinter import messagebox
+from tkinter import messagebox 
 from tkinter import *
 import sys
 import os
@@ -43,7 +43,7 @@ def permissions():
         conn.close()
         messagebox.showinfo('info', 'Welcome Admin.')
         select_option()
-    
+
     else:
         conn.close()
         messagebox.showinfo('info', 'Welcome Staff.')
