@@ -14,7 +14,7 @@ import os
 with sqlite3.connect('login.sqlite') as conn:
     c = conn.cursor()
 
-c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, level INTEGER)")
+c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, login INTEGER)")
 conn.commit()
 conn.close()
 

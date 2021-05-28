@@ -12,7 +12,15 @@ import os
 with sqlite3.connect('login.sqlite') as conn:
     c = conn.cursor()
 
-c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, level INTEGER)")
+c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, login INTEGER)")
+conn.commit()
+conn.close()
+
+# remove login token
+with sqlite3.connect('permissions.sqlite') as conn:
+    c = conn.cursor()
+
+c.execute("DELETE FROM access;")
 conn.commit()
 conn.close()
 
@@ -21,17 +29,17 @@ def login():
     conn = sqlite3.connect('login.sqlite')
     cursor=conn.cursor()
     cursor.execute("SELECT * FROM staff WHERE username=? AND password=?",(user_input.get(), pass_input.get()))
-    match=cursor.fetchone()
-    if match:
+    match1=cursor.fetchone()
+    if match1:
         # permissions
-        conn.close()
         messagebox.showinfo('info', 'Login Success!')   
         permissions()
+                
 
     else:
         # error screen
-        conn.close()
         messagebox.showinfo('info', 'Login failure.')
+    
 
 def permissions():
     conn = sqlite3.connect('login.sqlite')
@@ -41,13 +49,23 @@ def permissions():
     if match:
         # admin permissions, move to selection
         conn.close()
+        conn = sqlite3.connect('permissions.sqlite')
+        cursor2=conn.cursor()
+        cursor2.execute('INSERT INTO access (level) VALUES (1)')
+        conn.commit()
+        conn.close()
         messagebox.showinfo('info', 'Welcome Admin.')
         select_option()
 
     else:
         conn.close()
+        conn = sqlite3.connect('permissions.sqlite')
+        cursor3=conn.cursor()
+        cursor3.execute('INSERT INTO access (level) VALUES (2)')
+        conn.commit()
+        conn.close()
         messagebox.showinfo('info', 'Welcome Staff.')
-        interface_option()
+        select_option()
 
 # focus next text box
 def focus_next(event):
@@ -89,7 +107,7 @@ tk_main.title('Login')
 tk_main.geometry('320x220')
 
 # title 
-info_label=tkinter.Label(tk_main, text='Login Application', font=info_font)
+info_label=tkinter.Label(tk_main, text='Login Application', font=info_font, borderwidth=2,)
 info_label.grid(row=0, column=0)
 
 # username input
