@@ -93,11 +93,6 @@ def select_option():
     tk_main.destroy()
     os.system(r'python Selection_Screen\Select.py')
 
-# open interface app
-def interface_option():
-    tk_main.destroy()
-    os.system(r'python Database_Interface\Interface.py')
-
 # fonts
 info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
 input_font=tkFont.Font(family="Source Code Pro Italic", size=15)

@@ -31,13 +31,28 @@ def data_window():
     tk_main.destroy()
     os.system(r'python Database_Interface\Interface.py')
 
+def confirm():
+    conn = sqlite3.connect('permissions.sqlite')
+    cursor=conn.cursor()
+    cursor.execute("SELECT * FROM access WHERE level = 1")
+    match=cursor.fetchone()
+    if match: 
+        conn.close()
+        messagebox.showinfo('info', 'Register new users here.')
+        reg_window()
+    else: 
+        conn.close()
+        messagebox.showinfo('info', 'You do not have the credentials to register new users.')
+
+
+
 # buttons
 data_btn = Button(text="Edit Data",command=data_window)
 data_btn.place(x=25, y=50)
 data_btn.config(height = 2, width = 9)
 data_btn['font'] = input_font
 
-reg_btn = Button(text="Register",command=reg_window)
+reg_btn = Button(text="Register",command=confirm)
 reg_btn.place(x=205, y=50)
 reg_btn.config(height = 2, width = 8)
 reg_btn['font'] = input_font
