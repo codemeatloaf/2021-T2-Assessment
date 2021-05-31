@@ -14,7 +14,7 @@ import os
 with sqlite3.connect('login.sqlite') as conn:
     c = conn.cursor()
 
-c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, login INTEGER)")
+c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, level INTEGER)")
 conn.commit()
 conn.close()
 
@@ -120,6 +120,9 @@ def blank3():
         savedata()
     else:
         messagebox.showinfo('info', 'Level required.')
+
+# make it so that if you already have the account, you cant make it again
+#def blank4():
 
 
 # spacer
