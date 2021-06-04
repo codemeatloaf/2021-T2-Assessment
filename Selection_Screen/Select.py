@@ -47,7 +47,7 @@ def confirm():
 
 
 # buttons
-data_btn = Button(text="Edit Data",command=data_window)
+data_btn = Button(text="Modify",command=data_window)
 data_btn.place(x=25, y=50)
 data_btn.config(height = 2, width = 9)
 data_btn['font'] = input_font

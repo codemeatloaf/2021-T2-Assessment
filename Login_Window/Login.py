@@ -15,6 +15,7 @@ with sqlite3.connect('login.sqlite') as conn:
 c.execute("CREATE TABLE IF NOT EXISTS staff (username TEXT, password TEXT, level INTEGER)")
 conn.commit()
 conn.close()
+print('MYSQLITE connection closed (1/4)')
 
 # remove login token
 with sqlite3.connect('permissions.sqlite') as conn:
@@ -23,6 +24,7 @@ with sqlite3.connect('permissions.sqlite') as conn:
 c.execute("DELETE FROM access;")
 conn.commit()
 conn.close()
+print('MYSQLITE connection closed (2/4)')
 
 # define variables
 def login():
@@ -54,6 +56,7 @@ def permissions():
         cursor2.execute('INSERT INTO access (level) VALUES (1)')
         conn.commit()
         conn.close()
+        print('MYSQLITE connection closed (3/4)')
         messagebox.showinfo('info', 'Welcome Admin.')
         select_option()
 
@@ -64,6 +67,7 @@ def permissions():
         cursor3.execute('INSERT INTO access (level) VALUES (2)')
         conn.commit()
         conn.close()
+        print('MYSQLITE connection closed (4/4)')
         messagebox.showinfo('info', 'Welcome Staff.')
         select_option()
 
