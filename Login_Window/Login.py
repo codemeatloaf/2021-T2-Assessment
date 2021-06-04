@@ -95,7 +95,7 @@ def signup_option():
 # open selection app
 def select_option():
     tk_main.destroy()
-    os.system(r'python Selection_Screen\Select.py')
+    os.system(r'python Selection_Window\Select.py')
 
 # fonts
 info_font=tkFont.Font(family="Source Code Pro Bold", size=20)
