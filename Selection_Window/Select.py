@@ -29,7 +29,7 @@ def reg_window():
 
 def data_window():
     tk_main.destroy()
-    os.system(r'python Sales_Window\Interface.py')
+    os.system(r'python Modify_Window\Modify.py')
 
 def confirm():
     conn = sqlite3.connect('permissions.sqlite')
