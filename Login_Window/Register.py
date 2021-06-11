@@ -112,7 +112,7 @@ def secure():
     if password2_input.get() == password_input.get():
         blank3()
     else:
-     messagebox.showinfo('info', 'Please check your password.')   
+     messagebox.showinfo('info', 'Your re-entered password does not match your password.')   
 
 
 def blank3():
