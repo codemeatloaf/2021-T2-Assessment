@@ -44,7 +44,6 @@ tabControl.add(tab1, text ='Display')
 tabControl.add(tab2, text ='Manage')
 tabControl.add(tab3, text ='Modify')
 tabControl.add(tab4, text ='Staff')
-tabControl.add(tab5, text ='Site Map')
 tabControl.pack(expand = 1, fill ="both")
 
 # Tab 1
@@ -57,16 +56,6 @@ Label2.grid(column = 0, row = 0)
 
 user_input=tkinter.Entry(tab1, textvariable=table)
 user_input.grid(column = 2, row = 1)
-
-with sqlite3.connect('login.sqlite') as conn:
-    c = conn.cursor()
-c.execute("SELECT username FROM staff")
-result = c.fetchall()
-for row in result:
-    print("Username: ", row[0])
-#    print("Level: ", row[1])
-    conn.close()
-print('MYSQLITE connection closed (2/2)')
 
 # end of mainloop
 tk_main.mainloop()
