@@ -87,10 +87,10 @@ tk_main['padx']=padding
 username=tkinter.StringVar()
 password=tkinter.StringVar()
 
-# open sign up app
-def signup_option():
-    tk_main.destroy()
-    os.system(r'python Login_Window\Register.py')
+# open sign up app (old test code)
+# def signup_option():
+#    tk_main.destroy()
+#    os.system(r'python Login_Window\Register.py')
 
 # open selection app
 def select_option():
@@ -130,10 +130,6 @@ spacer.grid(row=8, column=0)
 # submit
 submit_btn=tkinter.Button(text='Submit', command=login)
 submit_btn.grid(row=9, column=0)
-
-# create admin account
-#sign_btn=tkinter.Button(text="Sign Up", command= signup_option)
-#sign_btn.grid(row=10, column=0)
 
 # end of mainloop
 tk_main.mainloop()
